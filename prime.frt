@@ -14,18 +14,36 @@
 	cr
 ;
 
-( n -- 0/1 ) 
+( res -- addr )
+: save_result 
+	1 allot ( allocate 1 byte )	
+	swap over
+	!
+;
+
+( n -- 0/1/-1 ) 
 : is_prime
 	dup 1 <
-	if . ."  is not natural\n" exit then
+	if . ."  is not natural\n" -1
+		save_result
+		exit 
+	then
+
 	dup 1 =
-	if drop 0 exit then
+	if drop 0 
+		save_result
+		exit 
+	then
+	
 	dup 2 = 
-	if drop 1 exit then
+	if drop 1 
+		save_result
+		exit 
+	then
 
 	dup sqrt 1 + 2 
 	do
-		r@ . ."  count it\n" 
+		r@ . ."  num\n" 
 		dup r@ % 
 		not
 		if 
@@ -35,4 +53,5 @@
 		then
 	loop
 	0 = if 0 else drop 1 then
+	save_result
 ;
