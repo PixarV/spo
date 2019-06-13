@@ -1,6 +1,7 @@
 # spo
-spo course project
 
-One more course Foth project
+One more course Forth project
 
+For build: make clean && make
 
+For run: .\try_forth
