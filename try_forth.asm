@@ -11,8 +11,8 @@ section .text
 %include "util_methods/io.inc"
 %include "choice.inc"
 %include "stack.inc"
-%include "util_methods/interpreter.inc"
-%include "util_methods/forth-utils.inc"
+%include "util_methods/second.inc"
+%include "util_methods/utils.inc"
 
 section .bss
 
