@@ -1,4 +1,5 @@
 global _start
+
 %include "macro.inc"
 
 %define pc r15		;next command pointer
@@ -7,9 +8,11 @@ global _start
 
 section .text
 
+%include "util_methods/io.inc"
 %include "choice.inc"
-%include "interpreter.inc"
-%include "util.asm"
+%include "stack.inc"
+%include "util_methods/interpreter.inc"
+%include "util_methods/forth-utils.inc"
 
 section .bss
 
@@ -20,7 +23,7 @@ user_mem: resq 65536	;global data for user
 
 section .data
 
-last_word: dq _lw
+last_word: dq _lw ; _lw = 0
 
 dp: dq user_mem		;current global data pointer
 stack_start: dq 0	;stores a saved address of data stack
