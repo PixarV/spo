@@ -12,7 +12,7 @@ native "swap", swap
 native "dup", dup
     push qword[rsp]
     jmp next
-    
+
 native '.S', show_stack
   mov rcx, rsp
   .loop:
@@ -25,3 +25,8 @@ native '.S', show_stack
     pop rcx
     add rcx, 8
     jmp .loop
+
+native '.', dot
+  pop rdi
+  call print_int
+  jmp next
